@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: http: data:; style-src 'self' 'unsafe-inline'">
+  <title>Instance Browser</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="tabbar">
+    <div id="tabs"></div>
+    <button id="newTab" title="Новый экземпляр (Ctrl+T)">+</button>
+  </div>
+  <div id="toolbar">
+    <button id="back" title="Назад (Alt+←)">←</button>
+    <button id="forward" title="Вперёд (Alt+→)">→</button>
+    <button id="reload" title="Обновить (F5)">⟳</button>
+    <input id="url" type="text" spellcheck="false" placeholder="Введите адрес или поисковый запрос">
+    <span id="mem"></span>
+    <button id="settings" title="Настройки памяти">⚙</button>
+  </div>
+  <div id="empty"></div>
+
+  <dialog id="modal">
+    <form method="dialog" id="modalForm">
+      <h3 id="modalTitle"></h3>
+      <label>Название
+        <input id="fName" type="text" maxlength="40" autocomplete="off">
+      </label>
+      <label id="rowUrl">Стартовая страница (необязательно)
+        <input id="fUrl" type="text" spellcheck="false" autocomplete="off" placeholder="https://example.com">
+      </label>
+      <label id="rowIdle">Выключать неактивные экземпляры через (минут, 0 — никогда)
+        <input id="fIdle" type="number" min="0" step="5">
+      </label>
+      <button type="button" id="hibernateNow" class="secondary">Выключить все неактивные сейчас</button>
+      <div class="actions">
+        <button type="button" id="modalCancel" class="secondary">Отмена</button>
+        <button type="submit" id="modalOk">OK</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "instance-browser",
+  "productName": "Instance Browser",
+  "version": "1.0.0",
+  "description": "Оркестратор изолированных экземпляров браузера (Chromium)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "latest"
+  }
+}

@@ -1,0 +1,63 @@
+:root {
+  --bg: #1f2023;
+  --tab-bg: #2b2c30;
+  --tab-active: #3a3c42;
+  --text: #e8e9ec;
+  --muted: #9a9ca3;
+  --accent: #5b9dff;
+  --border: #3d3f45;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); font: 13px/1.3 "Segoe UI", system-ui, sans-serif; overflow: hidden; user-select: none; }
+
+#tabbar { height: 40px; display: flex; align-items: flex-end; gap: 4px; padding: 6px 8px 0; background: #17181a; }
+#tabs { display: flex; gap: 2px; min-width: 0; flex: 0 1 auto; overflow: hidden; }
+.tab {
+  position: relative; display: flex; align-items: center; gap: 7px;
+  height: 34px; min-width: 70px; max-width: 220px; flex: 0 1 200px; padding: 0 8px 0 10px;
+  background: var(--tab-bg); border-radius: 9px 9px 0 0; cursor: default; overflow: hidden;
+}
+.tab:hover { background: #33353a; }
+.tab.active { background: var(--tab-active); }
+.tab.stopped .label { color: var(--muted); }
+.tab.stopped .dot { opacity: .35; }
+.tab .bar { position: absolute; left: 0; right: 0; top: 0; height: 3px; }
+.tab .icon { width: 16px; height: 16px; flex: none; display: flex; align-items: center; justify-content: center; }
+.tab .icon img { width: 16px; height: 16px; border-radius: 3px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.tab .text { min-width: 0; flex: 1; display: flex; flex-direction: column; }
+.tab .label { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tab .sub { font-size: 10.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tab .power { flex: none; width: 20px; height: 20px; border: 0; border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer; font-size: 12px; padding: 0; }
+.tab .power:hover { background: rgba(255,255,255,.14); color: var(--text); }
+.tab.loading .icon { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#newTab { width: 30px; height: 30px; margin-bottom: 2px; border: 0; border-radius: 50%; background: transparent; color: var(--text); font-size: 20px; cursor: pointer; }
+#newTab:hover { background: rgba(255,255,255,.12); }
+
+#toolbar { height: 44px; display: flex; align-items: center; gap: 4px; padding: 0 8px; background: var(--tab-active); border-bottom: 1px solid var(--border); }
+#toolbar button { width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: var(--text); font-size: 16px; cursor: pointer; }
+#toolbar button:hover:not(:disabled) { background: rgba(255,255,255,.12); }
+#toolbar button:disabled { color: #5d5f66; cursor: default; }
+#url { flex: 1; height: 30px; padding: 0 14px; border: 1px solid transparent; border-radius: 15px; background: #1f2023; color: var(--text); font: inherit; font-size: 13.5px; outline: none; user-select: text; }
+#url:focus { border-color: var(--accent); }
+#mem { color: var(--muted); font-size: 12px; padding: 0 6px; white-space: nowrap; }
+
+#empty { position: absolute; left: 0; right: 0; top: 84px; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--muted); font-size: 15px; text-align: center; padding: 20px; }
+#empty[hidden] { display: none; }
+#empty h2 { margin: 0; color: var(--text); font-weight: 600; }
+#empty p { margin: 0; max-width: 460px; }
+
+button.primary, #modalOk { background: var(--accent); color: #0b1220; border: 0; border-radius: 6px; padding: 8px 16px; font: inherit; font-weight: 600; cursor: pointer; }
+button.secondary { background: #3a3c42; color: var(--text); border: 0; border-radius: 6px; padding: 8px 16px; font: inherit; cursor: pointer; }
+button.secondary:hover { background: #45474e; }
+
+dialog { background: #2b2c30; color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; width: 400px; }
+dialog::backdrop { background: rgba(0,0,0,.45); }
+dialog h3 { margin: 0 0 14px; font-size: 16px; }
+dialog label { display: block; margin-bottom: 12px; color: var(--muted); }
+dialog input { display: block; width: 100%; margin-top: 5px; height: 32px; padding: 0 10px; border: 1px solid var(--border); border-radius: 6px; background: #1f2023; color: var(--text); font: inherit; outline: none; user-select: text; }
+dialog input:focus { border-color: var(--accent); }
+dialog .actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+#hibernateNow { width: 100%; margin-bottom: 4px; }
